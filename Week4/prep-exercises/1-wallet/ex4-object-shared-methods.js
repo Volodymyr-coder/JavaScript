@@ -10,8 +10,21 @@ function withdraw(amount) {
     return 0;
   }
 
+  if (this._dayTotalWithdrawals + amount > this._dailyAllowance) {
+    return 0;
+  }
+
   this._cash -= amount;
+  this._dayTotalWithdrawals += amount;
   return amount;
+}
+
+function resetDailyAllowance() {
+  return (dayTotalWithdrawals = 0);
+}
+
+function setDailyAllowance(newAllowance) {
+  this.dayAllowance = newAllowance;
 }
 
 function transferInto(wallet, amount) {
@@ -43,6 +56,8 @@ function createWallet(name, cash = 0) {
     transferInto,
     reportBalance,
     getName,
+    reportBalance,
+    setDailyAllowance,
   };
 }
 

@@ -4,9 +4,19 @@ function createWallet(name, cash = 0) {
   return {
     _name: name,
     _cash: cash,
+    _dailyAllowance: 40,
+    _dayTotalWithdrawals: 0,
 
     deposit: function (amount) {
       this._cash += amount;
+    },
+
+    resetDailyAllowance() {
+      return (this._dayTotalWithdrawals = 0);
+    },
+
+    setDailyAllowance(newAllowance) {
+      this._dayTotalWithdrawals = newAllowance;
     },
 
     withdraw: function (amount) {

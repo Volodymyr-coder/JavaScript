@@ -3,6 +3,8 @@ import eurosFormatter from './euroFormatter.js';
 function Wallet(name, cash) {
   this._name = name;
   this._cash = cash;
+  this._dailyAllowance = 40;
+  this._dayTotalWithdrawals = 0;
 }
 
 Wallet.prototype.deposit = function (amount) {
@@ -37,6 +39,14 @@ Wallet.prototype.reportBalance = function () {
 
 Wallet.prototype.getName = function () {
   return this._name;
+};
+
+Wallet.prototype.resetDailyAllowance = function resetDailyAllowance() {
+  return (_dayTotalWithdrawals = 0);
+};
+
+Wallet.prototype.setDailyAllowance(newAllowance) = function setDailyAllowance(newAllowance) {
+  return this._dailyAllowance = newAllowance;
 };
 
 function main() {

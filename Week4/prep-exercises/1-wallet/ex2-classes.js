@@ -3,10 +3,27 @@ import eurosFormatter from './euroFormatter.js';
 class Wallet {
   #name;
   #cash;
+  #dailyAllowance;
+  #dayTotalWithdrawals;
 
   constructor(name, cash) {
     this.#name = name;
     this.#cash = cash;
+    this.#dailyAllowance = 40;
+    this.#dayTotalWithdrawals = 0;
+  }
+
+  resetDailyAllowance() {
+    this.#dayTotalWithdrawals = 0;
+    console.log(this.#dayTotalWithdrawals);
+  }
+
+  get getDailyAllowance() {
+    return this.#dailyAllowance;
+  }
+
+  setDailyAllowance(newAllowance) {
+    this.#dailyAllowance = newAllowance;
   }
 
   get name() {
